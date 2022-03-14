@@ -4,19 +4,24 @@ from telethon.tl.types import InputPeerEmpty
 import os, sys
 import configparser
 import csv
- importtime
+import time
+
 re="\033[1;31m"
 gr="\033[1;32m"
 cy="\033[1;36m"
+
 def banner():
     print(f"""
 {re}╔╦╗{cy}┌─┐┌─┐┌─┐┌─┐┬─┐{re}╔═╗
 {re} ║ {cy}├─┐├┤ ├─┘├─┤├┬┘{re}╚═╗
-{re} ╩ {cy}└─┘└─┘┴ ┴ ┴┴└─{re}╚═╝
-by https://github.com/djq47r
+{re} ╩ {cy}└─┘└─┘┴  ┴ ┴┴└─{re}╚═╝
+by https://github.com/elizhabs
+
         """)
+
 cpass = configparser.RawConfigParser()
 cpass.read('config.data')
+
 try:
     api_id = cpass['cred']['id']
     api_hash = cpass['cred']['hash']
@@ -27,6 +32,7 @@ except KeyError:
     banner()
     print(re+"[!] run python3 setup.py first !!\n")
     sys.exit(1)
+
 client.connect()
 if not client.is_user_authorized():
     client.send_code_request(phone)
@@ -49,11 +55,10 @@ result = client(GetDialogsRequest(
              hash = 0
          ))
 chats.extend(result.chats)
-
+ 
 for chat in chats:
     try:
         if chat.megagroup== True:
-        #if chat.megagroup== True:
             groups.append(chat)
     except:
         continue
