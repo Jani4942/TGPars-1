@@ -14,7 +14,7 @@ def banner():
 {re}╔╦╗{cy}┌─┐┌─┐┌─┐┌─┐┬─┐{re}╔═╗
 {re} ║ {cy}├─┐├┤ ├─┘├─┤├┬┘{re}╚═╗
 {re} ╩ {cy}└─┘└─┘┴ ┴ ┴┴└─{re}╚═╝
-by https://github.com/elizhabs
+by https://github.com/djq47r
         """)
 cpass = configparser.RawConfigParser()
 cpass.read('config.data')
